@@ -3,7 +3,7 @@ require 'attribute_struct'
 
 class LxcStruct < AttributeStruct
 
-  def network(*args, &block)
+  def lxc(*args, &block)
     unless(self[:lxc])
       set!(:lxc, ::AttributeStruct::CollapseArray.new)
       self[:lxc].push(_klass_new)
