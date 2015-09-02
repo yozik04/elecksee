@@ -4,16 +4,16 @@ require 'attribute_struct'
 class LxcStruct < AttributeStruct
 
   def network(*args, &block)
-    unless(self[:network])
-      set!(:network, ::AttributeStruct::CollapseArray.new)
-      self[:network].push(_klass_new)
+    unless(self[:lxc])
+      set!(:lxc, ::AttributeStruct::CollapseArray.new)
+      self[:lxc].push(_klass_new)
     end
-    if(self[:network].last._data[:type].is_a?(::AttributeStruct::CollapseArray))
-      val = self[:network].last._data[:type].pop
-      self[:network].push(_klass_new)
-      self[:network].last.set!(:type, val)
+    if(self[:lxc].last._data[:type].is_a?(::AttributeStruct::CollapseArray))
+      val = self[:lxc].last._data[:type].pop
+      self[:lxc].push(_klass_new)
+      self[:lxc].last.set!(:type, val)
     end
-    self[:network].last
+    self[:lxc].last
   end
 
   def _klass
